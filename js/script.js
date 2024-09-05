@@ -37,8 +37,25 @@ scrollLeftBtn.addEventListener('click', () => {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-    resizeMenuButton()
+    resizeDoc();
 });
+
+function resizeDoc(){
+    scaleStoryAside();
+    resizeMenuButton();
+}
+function scaleStoryAside() {
+    if(window.innerWidth >= 900)
+    {
+        var ourStoryText = document.getElementById("story-body");
+        var ourStoryAsideContainer = document.getElementById("story-header-aside");
+        ourStoryAsideContainer.style.height = ourStoryText.offsetHeight + "px";
+    }
+    else{
+        var ourStoryAsideContainer = document.getElementById("story-header-aside");
+        ourStoryAsideContainer.style.height = null;
+    }
+}
 
 function resizeMenuButton() {
     // Get the first button
@@ -50,4 +67,4 @@ function resizeMenuButton() {
     menuButton.style.width = tapButton.offsetWidth + "px";
 }
 
-window.onresize = resizeMenuButton;
+window.onresize = resizeDoc;
